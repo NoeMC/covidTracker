@@ -1,0 +1,36 @@
+<div>
+    <div class="row" *ngIf='datos; else elseBlock'>
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{acumulados}}</h3>
+                    <a><img src="../../../assets/images/coronavirus.svg" style="width: 40px; position: absolute; top: 10%; right: 10%;"></a>
+                    <h5 class="card-text">Positivos</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{muertesAcumulado}}</h3>
+                    <a><img src="../../../assets/images/lapida-sepulcral.svg" style="width: 40px; position: absolute; top: 10%; right: 10%;"></a>
+                    <h5 class="card-text">Defunciones</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{activos}}</h3>
+                    <a><img src="../../../assets/images/estornudar.svg" style="width: 40px; position: absolute; top: 10%; right: 10%;"></a>
+                    <h5 class="card-text">Vigentes</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <app-loading></app-loading>
+    </ng-template>
+
+
+</div>

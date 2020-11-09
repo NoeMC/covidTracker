@@ -1,0 +1,94 @@
+<app-barra-s [bg]='colornb' [NPG]='npg'>
+</app-barra-s>
+<div style="margin: 20px;">
+    <div>
+        <div class="row">
+            <div class="col-sm-12 col-xl-6 separacion">
+                <div class="text-left">
+
+                    <h3>Selecciona colonia</h3>
+                    <form>
+                        <input #colonia type="text" class="form-control" placeholder="Nombre de colonia" [formControl]="control" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let street of filteredStreets" [value]="street">
+                                {{street}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-6 separacion">
+                <h3>Selecciona fecha</h3>
+                <div class="input-group">
+                    <input #fecha type="text" class="form-control" matInput [matDatepicker]="picker">
+                    <div class="input-group-append">
+                        <span class="input-group" style="background-color: rgba(43, 40, 40, 0.753);">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xl-6 separacion">
+                <h3>Llena los datos</h3>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Casos</th>
+                            <th scope="col">Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row ">Acumulados</th>
+                            <td class="tdSB "><input #ac class="inputSB " type="number " placeholder="0 "></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row ">Muertes</th>
+                            <td class="tdSB "><input #mt class="inputSB " type="number " placeholder="0 "></td>
+                        </tr>
+                        <tr>
+                            <th scope="row ">Vigentes</th>
+                            <td class="tdSB "><input #vg class="inputSB " type="number " placeholder="0 "></td>
+                        </tr>
+                        <tr>
+                            <th scope="row ">Nuevos</th>
+                            <td class="tdSB "><input #nv class="inputSB " type="number " placeholder="0 "></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" (click)="llenarBaseDatos(colonia.value, fecha.value, ac.value, mt.value, vg.value, nv.value)" class="btn btn-lg btn-primary">Enviar datos</button>
+            </div>
+            <div class="col-sm-12 col-xl-6 separacion">
+                <h3>Cargar archivo CSV</h3>
+                <p>El Documento debe contener los siguientes campos, en el cual cada atributo va serarado por coma, y cada fila diferencia una colonia.</p>
+                <ul>
+                    <li>
+                        Nombre de colonia
+                    </li>
+                    <li>
+                        Fecha (dd-mm-yy)
+                    </li>
+                    <li>
+                        Casos Acumulados
+                    </li>
+                    <li>
+                        Muertes acumuladas
+                    </li>
+                    <li>
+                        Casos vigentes
+                    </li>
+                    <li>
+                        Casos nuevos
+                    </li>
+                </ul>
+                <p>El tamborcito,20-10-2020,36040,1000,156,35</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>

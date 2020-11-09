@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+.tituloGlobal {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-family: QuickSand;
+    text-align: center;
+}
+
+.topSeparacion {
+    margin-top: 20px;
+}
+
+.card {
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+    border-radius: .5rem;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

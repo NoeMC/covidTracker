@@ -1,0 +1,49 @@
+<div>
+    <div class="deviceBg">
+        <app-barra-s [NPG]='npg'></app-barra-s>
+        <div class="titulo">
+            <h1 class="text-center formato">Covid-19 Tracker</h1>
+            <h5 class="text-center formato">Monitorea el numero de casos activos cerca de tu localidad.</h5>
+            <div style="justify-content: center;display: flex; margin-top: 20px;">
+                <a class="btn btn-danger btn-lg" (click)="navegarPara('mapa')"> Comienza Ahora</a>
+            </div>
+        </div>
+    </div>
+    <div class="graficas">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 topSeparacion">
+                <h2 class="tituloGlobal">Contagios a nivel Nacional</h2>
+                <h5 class="tituloGlobal">{{fecha | date}}</h5>
+                <div style="margin-top: 7%">
+                    <app-estadisticas [datos]='datosHistorialPais'></app-estadisticas>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 topSeparacion">
+                <div class="card">
+                    <app-contagios-generales style="margin: 20px;" [data]='datosPais' [limites]='limitesPais'></app-contagios-generales>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="graficas">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 topSeparacion">
+                <h2 class="tituloGlobal">Contagios en Puebla</h2>
+                <h5 class="tituloGlobal">{{fecha | date}}</h5>
+                <div style="margin-top: 7%">
+                    <app-estadisticas [datos]='datosHistorial'></app-estadisticas>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 topSeparacion">
+                <div class="card">
+                    <app-contagios-generales style="margin: 20px;" [data]='datosEstado' [limites]='limitesEstado'></app-contagios-generales>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 40px;">
+        <app-footer></app-footer>
+    </div>
+
+</div>

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark" [ngStyle]="{'background-color': bg}">
+    <a class="navbar-brand" href="#">
+        <img src="../../../../assets/images/rastreo.svg" width="30" height="30" alt="" loading="lazy">
+    </a>
+    <p style="font-family: QuickSand; color: aliceblue; font-weight: bold;" class="m-auto text-center">CovidTracker</p>
+    <button class="navbar-toggler" [ngClass]="{'collapsed':getEstado()}" type="button" (click)="cambiarEstado()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" [ngClass]="{'show':getEstado()}">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item" [ngClass]="{'active': NPG ===1}">
+                <a class="nav-link fuenteNav" (click)="cambiarEstado();navegarPara('home')">Inicio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item fuenteNav" [ngClass]="{'active': NPG ===2}">
+                <a class="nav-link" (click)="cambiarEstado();navegarPara('mapa')">Mapa</a>
+            </li>
+
+            <li class="nav-item fuenteNav" [ngClass]="{'active': NPG === 3}" *ngIf="auth.isAuthenticated$ | async">
+                <a class="nav-link" (click)="cambiarEstado();navegarPara('homeAdmin')">Admin</a>
+            </li>
+        </ul>
+        <button *ngIf="(auth.isAuthenticated$ | async) === false" class="btn btn-warning btn-sm my-2 my-sm-0 ml-3 " type="submit " (click)="auth.loginWithRedirect()">Login</button>
+        <button *ngIf="auth.isAuthenticated$ | async" class="btn btn-danger btn-sm my-2 my-sm-0 ml-3" type="submit" (click)="logout()">Logout</button>
+    </div>
+
+</nav>

@@ -1,0 +1,50 @@
+<div>
+    <div>
+        <app-barra-s [bg]='colornb' [NPG]='npg'></app-barra-s>
+    </div>
+    <div class="espacio">
+
+        <div class="form-row align-items-center" style="margin-left: 10px; margin-right: 10px;">
+            <div class="col-md-4 mb-3">
+                <div class="input-group">
+                    <div style="margin-right: 5px;">
+                        <img src="../../../../assets/images/busqueda.svg" width="30" height="30" alt="" loading="lazy">
+
+                    </div>
+
+                    <input #termino type="text" class="form-control" placeholder="Nombre de colonia" [formControl]="control" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let street of filteredStreets" [value]="street">
+                            {{street}}
+                        </mat-option>
+                    </mat-autocomplete>
+
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" (click)='buscarCiudad(termino.value)' class="btn btn-primary mb-3">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <div #mapContainer id="map" style="top: 5px;">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 topSeparacion">
+                <h2 class="tituloGlobal">Contagios en tu colonia</h2>
+                <div style="margin-top: 10%">
+                    <app-estadisticas [datos]='miCiudadHistorial'></app-estadisticas>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 topSeparacion">
+                <div class="card">
+                    <app-contagios-generales style="margin: 20px;" [data]='miCiudadGeneral' [limites]='limitesGrafi'></app-contagios-generales>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 40px;">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.473);
+    }
+    
+    .fuenteNav {
+        font-family: QuickSand;
+        color: aliceblue;
+        font-weight: bold;
+    }
