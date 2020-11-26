@@ -19,6 +19,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotifyComponent } from './componets/shared/notify/notify.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -32,6 +35,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminHomeComponent,
     EstadisticasComponent,
     LoadingComponent,
+    NotifyComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

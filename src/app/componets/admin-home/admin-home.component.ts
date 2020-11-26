@@ -2,6 +2,8 @@ import {Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {startWith, switchMap} from 'rxjs/operators';
 import {RestcovidService } from '../../servicios/restcovid.service';
+import { NotifyComponent } from '../shared/notify/notify.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 
@@ -13,11 +15,12 @@ import {RestcovidService } from '../../servicios/restcovid.service';
 export class AdminHomeComponent implements OnInit {
   colornb = '#229990';
   npg = 3;
+  durationInSeconds = 2;
 
   control = new FormControl();
   filteredStreets: any[] = [];
 
-  constructor(private covid_service: RestcovidService) {
+  constructor(private covid_service: RestcovidService, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -38,12 +41,17 @@ export class AdminHomeComponent implements OnInit {
 
   llenarBaseDatos(nombre:any, fecha:any, ac:any, mt:any, vg:any, nv:any): void{
     if (!nv || !nombre || !fecha || !ac || !mt || !vg){
-      console.log("si esta bien");
     }else{
       let dates = new Date( new Date(fecha).getFullYear(), new Date(fecha).getMonth(), new Date(fecha).getDate());
-      let otro = this.covid_service.putHistorialCiudad(nombre, fecha,ac,mt,vg,nv,nv);
+      console.log(dates);
+      let otro = this.covid_service.putHistorialCiudad(nombre, fecha,nv,mt,vg,nv,ac);
       otro.then(info => console.log(info));
     }
+  }
+  openSnackBar(): void {
+    this._snackBar.openFromComponent(NotifyComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
   }
 
 }

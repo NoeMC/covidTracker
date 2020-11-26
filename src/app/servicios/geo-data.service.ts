@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GeoDataService {
-  keyAPI = 'GGBWX7CQZP8XCOIY1VVD5DDPDZQCGGMN';
+  keyAPI = 'KZ7WGO6V4NUO5UQFXJIL3C3ZVKRDNNL7';
 
   constructor(private http:HttpClient) { }
 
